@@ -159,13 +159,16 @@ def inimigo_sortear_armas(level):
         inimigo_arma = inimigo_armas[randint(0, len(inimigo_armas)-k)]
     return inimigo_arma
 
-def criar_inimigo():
-    inimigo_level = sortear_level()
+def criar_inimigo(player_level):
+    inimigo_level = sortear_level(player_level)
     inimigo = {
         'nome': inimigo_sortear_nome(),
         'level': inimigo_level,
         'arma': inimigo_sortear_armas(inimigo_level)
     }
+
+    #classe, atributos e perícias do inimigo
+
     return inimigo
 
 def definir_atributos_inimigo():
@@ -266,6 +269,9 @@ def game():
             print(f'Atributos do jogador: \n {atributos_player}')
             print(f'Perícias do jogador: \n {pericias_player}')
             
+            inimigo = criar_inimigo()
+            print(inimigo)
+
             break
         elif a == 2:
             print('configurações')
