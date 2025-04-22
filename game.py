@@ -1,5 +1,6 @@
 from random import randint
 from time import sleep
+import os
 
 #A ideia é fazer um text-rpg em python com sistema de dados, perícias, atributos, miss, dano variado e etc, baseado no sistema de ordem paranormal
 
@@ -11,7 +12,6 @@ d10 = randint(1, 10)
 d8 = randint(1, 8)
 d6 = randint(1, 6)
 d4 = randint(1, 4)
-d3 = d6/2
 
 def definir_atributos_player():
     print('Sobre os atributos: \n' \
@@ -159,20 +159,35 @@ def inimigo_sortear_armas(level):
         inimigo_arma = inimigo_armas[randint(0, len(inimigo_armas)-k)]
     return inimigo_arma
 
-def criar_inimigo(player_level):
+def humano_x_monstro():
+    if round(d4/2) == 1:
+        humano = True
+    else: 
+        humano = False
+    return humano
+
+def humano_x_monstro(humano):
+    if round(d4/2) ==  1:
+        humano = False
+    else:
+        humano = True
+    return humano
+
+#classe, atributos e perícias do inimigo
+    
+
+def definir_atributos_inimigo():
+    None
+
+
+def criar_inimigo(humano , player_level, classe, atributos):
+
     inimigo_level = sortear_level(player_level)
     inimigo = {
         'nome': inimigo_sortear_nome(),
         'level': inimigo_level,
         'arma': inimigo_sortear_armas(inimigo_level)
     }
-
-    #classe, atributos e perícias do inimigo
-
-    return inimigo
-
-def definir_atributos_inimigo():
-    None
 
 #jogo
 def game():
@@ -184,103 +199,109 @@ def game():
         '3-Ajuda \n'
         '-> '))
         sleep(0.4)
-        if a == 1:
+        try:
+            if a == 1:
 
-            nome = str(input('Digite o nome do seu personagem: '))
-            sleep(0.4)
-            
-            classe, hpmax, sanidade, pe, defesa = definir_classe()
-            player_level = 1
+                nome = str(input('Digite o nome do seu personagem: '))
+                sleep(0.4)
+                
+                classe, hpmax, sanidade, pe, defesa = definir_classe()
+                player_level = 1
 
-            player = {
-                'Nome': nome,
-                'Classe': classe,
-                'Level': player_level
-            }
-            
-            sleep(0.4)
-            agilidade, forca, inteligencia, presenca, vigor = definir_atributos_player()
-            atributos_player = {
-                'Agilidade': agilidade,
-                'Força': forca,
-                'Inteligência': inteligencia,
-                'Presença': presenca,
-                'Vigor': vigor
-            }
+                player = {
+                    'Nome': nome,
+                    'Classe': classe,
+                    'Level': player_level
+                }
+                
+                sleep(0.4)
+                agilidade, forca, inteligencia, presenca, vigor = definir_atributos_player()
+                atributos_player = {
+                    'Agilidade': agilidade,
+                    'Força': forca,
+                    'Inteligência': inteligencia,
+                    'Presença': presenca,
+                    'Vigor': vigor
+                }
 
-            
+                
 
-            player['HP Máximo'] = hpmax+vigor
-            player['Sanidade'] = sanidade
-            player['Pontos de Esforço'] = pe
-            player['Defesa'] = defesa
+                player['HP Máximo'] = hpmax+vigor
+                player['Sanidade'] = sanidade
+                player['Pontos de Esforço'] = pe
+                player['Defesa'] = defesa
 
-#Perícias
-            pericias_player = {
-                'Atualidades': 0, 'Ciência': 0, 'Diplomacia': 0, 'Enganação': 0,
-                'Furtividade': 0, 'Intimidação': 0, 'Intuição': 0, 'Investigação': 0,
-                'Luta': 0, 'Medicina': 0, 'Ocultismo': 0, 'Percepção': 0,
-                'Pontaria': 0, 'Reflexos': 0, 'Tecnologia': 0, 'Vontade': 0
-            }
+    #Perícias
+                pericias_player = {
+                    'Atualidades': 0, 'Ciência': 0, 'Diplomacia': 0, 'Enganação': 0,
+                    'Furtividade': 0, 'Intimidação': 0, 'Intuição': 0, 'Investigação': 0,
+                    'Luta': 0, 'Medicina': 0, 'Ocultismo': 0, 'Percepção': 0,
+                    'Pontaria': 0, 'Reflexos': 0, 'Tecnologia': 0, 'Vontade': 0
+                }
 
-            print('Agora escolha três perícias que você será treinado (ganha +5): ')
-            print('1-Atualidades \n', '2-Ciência \n', '3-Diplomacia \n', '4-Enganação \n', '5-Furtividade \n',
-                  '6-Intimidação \n', '7-Intuição \n', '8-Investigação \n', '9-Luta \n', '10-Medicina \n',
-                  '11-Ocultismo \n', '12-Percepção \n', '13-Pontaria \n', '14-Reflexos \n', '15-Tecnologia \n',
-                  '16-Vontade')
-            p1, p2, p3 = map(int, input('Digite o número das suas perícias separadas por espaço: ').split())
+                print('Agora escolha três perícias que você será treinado (ganha +5): ')
+                print('1-Atualidades \n', '2-Ciência \n', '3-Diplomacia \n', '4-Enganação \n', '5-Furtividade \n',
+                    '6-Intimidação \n', '7-Intuição \n', '8-Investigação \n', '9-Luta \n', '10-Medicina \n',
+                    '11-Ocultismo \n', '12-Percepção \n', '13-Pontaria \n', '14-Reflexos \n', '15-Tecnologia \n',
+                    '16-Vontade')
+                p1, p2, p3 = map(int, input('Digite o número das suas perícias separadas por espaço: ').split())
 
-            for p in [p1, p2, p3]:
-                match p:
-                    case 1:
-                        pericias_player['Atualidades'] = 5
-                    case 2:
-                        pericias_player['Ciência'] = 5
-                    case 3:
-                        pericias_player['Diplomacia'] = 5
-                    case 4:
-                        pericias_player['Enganação'] = 5
-                    case 5:
-                        pericias_player['Furtividade'] = 5
-                    case 6:
-                        pericias_player['Intimidação'] = 5
-                    case 7:
-                        pericias_player['Intuição'] = 5
-                    case 8:
-                        pericias_player['Investigação'] = 5
-                    case 9:
-                        pericias_player['Luta'] = 5
-                    case 10:
-                        pericias_player['Medicina'] = 5
-                    case 11:
-                        pericias_player['Ocultismo'] = 5
-                    case 12:
-                        pericias_player['Percepção'] = 5
-                    case 13:
-                        pericias_player['Pontaria'] = 5
-                    case 14:
-                        pericias_player['Reflexos'] = 5
-                    case 15:
-                        pericias_player['Tecnologia'] = 5
-                    case 16:
-                        pericias_player['Vontade'] = 5
+                for p in [p1, p2, p3]:
+                    match p:
+                        case 1:
+                            pericias_player['Atualidades'] = 5
+                        case 2:
+                            pericias_player['Ciência'] = 5
+                        case 3:
+                            pericias_player['Diplomacia'] = 5
+                        case 4:
+                            pericias_player['Enganação'] = 5
+                        case 5:
+                            pericias_player['Furtividade'] = 5
+                        case 6:
+                            pericias_player['Intimidação'] = 5
+                        case 7:
+                            pericias_player['Intuição'] = 5
+                        case 8:
+                            pericias_player['Investigação'] = 5
+                        case 9:
+                            pericias_player['Luta'] = 5
+                        case 10:
+                            pericias_player['Medicina'] = 5
+                        case 11:
+                            pericias_player['Ocultismo'] = 5
+                        case 12:
+                            pericias_player['Percepção'] = 5
+                        case 13:
+                            pericias_player['Pontaria'] = 5
+                        case 14:
+                            pericias_player['Reflexos'] = 5
+                        case 15:
+                            pericias_player['Tecnologia'] = 5
+                        case 16:
+                            pericias_player['Vontade'] = 5
 
-            print(f'Sobre o jogador: \n {player}')
-            print(f'Atributos do jogador: \n {atributos_player}')
-            print(f'Perícias do jogador: \n {pericias_player}')
-            
-            inimigo = criar_inimigo()
-            print(inimigo)
+                print(f'Sobre o jogador: \n {player}')
+                print(f'Atributos do jogador: \n {atributos_player}')
+                print(f'Perícias do jogador: \n {pericias_player}')
+                
+                inimigo = criar_inimigo(humano_x_monstro(), player_level)
+                print(inimigo)
 
-            break
-        elif a == 2:
-            print('configurações')
-            continue
-        elif a == 3:
-            print('ajuda')
-            continue
-        else:
-            print('Digite um número entre 1 e 3')
-            continue
-    
+                break
+            elif a == 2:
+                print('configurações')
+                continue
+            elif a == 3:
+                print('ajuda')
+                continue
+            else:
+                print('Digite um número entre 1 e 3')
+                continue
+        except:
+            print('Erro na leitura!')
+            input('Aperte qualquer tecla para continuar')
+            os.system('clear')
+            game()
+
 game()
