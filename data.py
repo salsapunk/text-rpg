@@ -30,6 +30,40 @@ ataques_fisicos = {
 
 #dicionário armas
 
+armas = {
+    'Desarmado': {
+        'Dano': d6,
+        'Alcance': 1
+    },
+    'Faca': {
+        'Dano': d6,
+        'Alcance': 1
+    },
+    'Barra de ferro': {
+        'Dano': d6,
+        'Alcance': 1
+    },
+    'Pedaço de madeira': {
+        'Dano': d6,
+        'Alcance': 1
+    },
+    'Pistola': {
+        'Dano': d10,
+        'Alcance': 5,
+        'Municoes': 6
+    },
+    'Doze': {
+        'Dano': 2*d12,
+        'Alcance': 10,
+        'Municoes': 2
+    },
+    'Rifle': {
+        'Dano': 2*d10,
+        'Alcance': 10,
+        'Municoes': 5
+    }
+}
+
     #nome, modificador, dano, alcance e munições
 
 #dicionário descrições

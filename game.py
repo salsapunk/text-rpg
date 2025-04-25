@@ -3,6 +3,7 @@ from time import sleep
 import os
 from data import *
 from functions import *
+from sistema import *
 
 #A ideia é fazer um text-rpg em python com sistema de dados, perícias, atributos, miss, dano variado e etc, baseado no sistema de ordem paranormal
 
@@ -27,10 +28,16 @@ def game():
 
         elif a == 2:
             print('configurações')
+            input('Pressione qualquer tecla para continuar.')
+            limpar_tela()
+            game()
         elif a == 3:
             print('ajuda')
+            input('Pressione qualquer tecla para continuar.')
+            limpar_tela()
+            game()
         else:
-            clear()
+            erro_clear()
             game()
 
 game()
