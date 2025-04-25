@@ -130,6 +130,61 @@ def definir_classe():
                     continue
             return classe, hpmax, sanidade, pe, defesa
 
+def pericias_player():
+    print('Agora escolha três perícias que você será treinado (ganha +5): ')
+    print('1-Atualidades \n', '2-Ciência \n',
+          '3-Diplomacia \n', '4-Enganação \n',
+          '5-Furtividade \n', '6-Intimidação \n',
+          '7-Intuição \n', '8-Investigação \n',
+          '9-Luta \n', '10-Medicina \n',
+          '11-Ocultismo \n', '12-Percepção \n',
+          '13-Pontaria \n', '14-Reflexos \n',
+          '15-Tecnologia \n', '16-Vontade')
+                                
+    try:
+        p1 = int(input('Digite o número da sua primeria perícia: '))
+        p2 = int(input('Digite o número da sua segunda perícia: '))
+        p3 = int(input('Digite o número da sua terceira perícia: '))
+    except:
+        print('Digite o número certo!')
+        p1, p2, p3 = None
+        input('Precione qualquer tecla para continuar...')
+        pericias_player()
+    for p in [p1, p2, p3]:
+        match p:
+            case 1:
+                pericias_player['Atualidades'] = 5
+            case 2:
+                pericias_player['Ciência'] = 5
+            case 3:
+                pericias_player['Diplomacia'] = 5
+            case 4:
+                pericias_player['Enganação'] = 5
+            case 5:
+                pericias_player['Furtividade'] = 5
+            case 6:
+                pericias_player['Intimidação'] = 5
+            case 7:
+                pericias_player['Intuição'] = 5
+            case 8:
+                pericias_player['Investigação'] = 5
+            case 9:
+                pericias_player['Luta'] = 5
+            case 10:
+                pericias_player['Medicina'] = 5
+            case 11:
+                pericias_player['Ocultismo'] = 5
+            case 12:
+                pericias_player['Percepção'] = 5
+            case 13:
+                pericias_player['Pontaria'] = 5
+            case 14:
+                pericias_player['Reflexos'] = 5
+            case 15:
+                pericias_player['Tecnologia'] = 5
+            case 16:
+                pericias_player['Vontade'] = 5
+
 #cria o player
 def criar_player():
                     nome = str(input('Digite o nome do seu personagem: '))
@@ -153,57 +208,15 @@ def criar_player():
                         'Presença': presenca,
                         'Vigor': vigor
                     }
-
                     
-
                     player['HP Máximo'] = hpmax+vigor
                     player['Sanidade'] = sanidade
                     player['Pontos de Esforço'] = pe
                     player['Defesa'] = defesa
 
-        #Perícias
-                    print('Agora escolha três perícias que você será treinado (ganha +5): ')
-                    print('1-Atualidades \n', '2-Ciência \n', '3-Diplomacia \n', '4-Enganação \n', '5-Furtividade \n',
-                        '6-Intimidação \n', '7-Intuição \n', '8-Investigação \n', '9-Luta \n', '10-Medicina \n',
-                        '11-Ocultismo \n', '12-Percepção \n', '13-Pontaria \n', '14-Reflexos \n', '15-Tecnologia \n',
-                        '16-Vontade')
-                    p1, p2, p3 = map(int, input('Digite o número das suas perícias separadas por espaço: ').split())
+                    player_pericias = pericias_player()
 
-                    for p in [p1, p2, p3]:
-                        match p:
-                            case 1:
-                                pericias_player['Atualidades'] = 5
-                            case 2:
-                                pericias_player['Ciência'] = 5
-                            case 3:
-                                pericias_player['Diplomacia'] = 5
-                            case 4:
-                                pericias_player['Enganação'] = 5
-                            case 5:
-                                pericias_player['Furtividade'] = 5
-                            case 6:
-                                pericias_player['Intimidação'] = 5
-                            case 7:
-                                pericias_player['Intuição'] = 5
-                            case 8:
-                                pericias_player['Investigação'] = 5
-                            case 9:
-                                pericias_player['Luta'] = 5
-                            case 10:
-                                pericias_player['Medicina'] = 5
-                            case 11:
-                                pericias_player['Ocultismo'] = 5
-                            case 12:
-                                pericias_player['Percepção'] = 5
-                            case 13:
-                                pericias_player['Pontaria'] = 5
-                            case 14:
-                                pericias_player['Reflexos'] = 5
-                            case 15:
-                                pericias_player['Tecnologia'] = 5
-                            case 16:
-                                pericias_player['Vontade'] = 5
-                    return player, atributos_player, pericias_player 
+                    return player, atributos_player, player_pericias 
 
 #funções inimigo
 
@@ -232,23 +245,57 @@ def inimigo_sortear_armas(level):
     return inimigo_arma
 
 #classe, atributos e perícias do inimigo
-    
 #define os atributos do inimigo
-def definir_atributos_inimigo():
-    None
+def classe_e_pericias_inimigo():
+    match randint(1, 3):
+        case 1:
+            classe_inimigo = classe_inimigo_ocultista
+            pericias_inimigo = pericias_ocultista
+        case 2:
+            classe_inimigo = classe_inimigo_combatente
+            pericias_inimigo = pericias_combatente
+        case 3:
+            classe_inimigo = classe_inimigo_especialista
+            pericias_inimigo = pericias_especialista
+    return classe_inimigo, pericias_inimigo
+
+def sortear_nome():
+    match randint(1, 3):
+        case 1:
+            nome = 'Róger'
+        case 2:
+            nome = 'Sérgio'
+        case 3:
+            nome = 'Rodolfo'
+    return nome
+
+def sortear_arma():
+    match randint(1, 3):
+        case 1:
+            arma = 'Desarmado'
+        case 2:
+            arma = 'Faca'
+        case 3:
+            arma = 'Pistola'
+    return arma
 
 #cria o inimigo
-def criar_inimigo(humano , player_level, classe, atributos):
+def criar_inimigo(humano):
+    if humano == True:
+        inimigo, pericias_inimigo = classe_e_pericias_inimigo()
+        inimigo['Nome'] = sortear_nome()
+        inimigo['Arma'] = sortear_arma()
+        #print(inimigo)
+        #print(pericias_inimigo)
+        
+    else:
+        print('nao foi hoje')
 
-    inimigo_level = sortear_level(player_level)
-    inimigo = {
-        'nome': inimigo_sortear_nome(),
-        'level': inimigo_level,
-        'arma': inimigo_sortear_armas(inimigo_level)
-    }
 
 #limpa a tela
 def clear():
     print('Erro na leitura!')
     input('Aperte qualquer tecla para continuar')
     os.system('clear')
+
+criar_inimigo(True,)

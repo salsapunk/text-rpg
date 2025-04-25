@@ -2,6 +2,17 @@ from random import randint
 level_inicial = 1
 player_level = level_inicial
 
+
+#dados
+d100 = randint(1, 100)
+d20 = randint(1, 20)
+d12 = randint(1, 12)
+d10 = randint(1, 10)
+d8 = randint(1, 8)
+d6 = randint(1, 6)
+d4 = randint(1, 4)
+
+
 #perícias player
 
 pericias_player = {
@@ -29,8 +40,10 @@ ataques_fisicos = {
 #dicionário inimigos
 
 classe_inimigo_ocultista = {
+    'Nome': None,
     'Classe': 'Ocultista',
     'Level': player_level + randint(0, 1),
+    'Arma': None,
     'HP-Max': 10 + 2*player_level,
     'HP-Atual': 10 + 2*player_level,
     'Sanidade': 15 + 2*player_level,
@@ -43,9 +56,18 @@ classe_inimigo_ocultista = {
     'Vigor': 0,
 }
 
+pericias_ocultista = {
+    'Atualidades': 0, 'Ciência': 0, 'Diplomacia': 0, 'Enganação': 0,
+    'Furtividade': 0, 'Intimidação': 0, 'Intuição': 5, 'Investigação': 0,
+    'Luta': 0, 'Medicina': 0, 'Ocultismo': 5, 'Percepção': 0,
+    'Pontaria': 0, 'Reflexos': 0, 'Tecnologia': 0, 'Vontade': 5
+}
+
 classe_inimigo_combatente = {
+    'Nome': None,
     'Classe': 'Combatente',
     'Level': player_level + randint(0, 1),
+    'Arma': None,
     'HP-Max': 15 + 2*player_level,
     'HP-Atual': 15 + 2*player_level,
     'Sanidade': 8 + 2*player_level,
@@ -58,9 +80,18 @@ classe_inimigo_combatente = {
     'Vigor': 3,
 }
 
+pericias_combatente = {
+    'Atualidades': 0, 'Ciência': 0, 'Diplomacia': 0, 'Enganação': 0,
+    'Furtividade': 0, 'Intimidação': 5, 'Intuição': 0, 'Investigação': 0,
+    'Luta': 5, 'Medicina': 0, 'Ocultismo': 0, 'Percepção': 0,
+    'Pontaria': 0, 'Reflexos': 5, 'Tecnologia': 0, 'Vontade': 0
+}
+
 classe_inimigo_especialista = {
+    'Nome': None,
     'Classe': 'Especialista',
     'Level': player_level + randint(0, 1),
+    'Arma': None,
     'HP-Max': 12 + 2*player_level,
     'HP-Atual': 12 + 2*player_level,
     'Sanidade': 10 + 2*player_level,
@@ -73,13 +104,9 @@ classe_inimigo_especialista = {
     'Vigor': 2,
 }
 
-def saber():
-    sort_classe = randint(1, 3)
-    if sort_classe == 1:
-        print(classe_inimigo_ocultista)
-    elif sort_classe == 2:
-        print(classe_inimigo_combatente)
-    else:
-        print(classe_inimigo_especialista)
-
-saber()
+pericias_especialista = {
+    'Atualidades': 0, 'Ciência': 0, 'Diplomacia': 0, 'Enganação': 0,
+    'Furtividade': 5, 'Intimidação': 0, 'Intuição': 0, 'Investigação': 5,
+    'Luta': 0, 'Medicina': 0, 'Ocultismo': 0, 'Percepção': 0,
+    'Pontaria': 5, 'Reflexos': 0, 'Tecnologia': 0, 'Vontade': 0
+}
