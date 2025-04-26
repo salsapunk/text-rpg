@@ -291,15 +291,22 @@ def criar_inimigo(humano):
     else:
         print('nao foi hoje')
 
-def calcular_dano(atacante, defensor):
-    dano_base = atacante.get(['Força'])
-    arma = atacante.get(['Arma'])
+def acoes_inimigo(inimigo, player):
+    acao = round(d6/2)
+    if acao == 1:
+        calcular_dano(inimigo, player)
+    if acao == 2: 
+        None
 
-    dano_arma = armas.get(['Dano'])
+def calcular_dano(atacante, defensor):
+    dano_base = atacante['Força']
+    arma = atacante['Arma']
+
+    dano_arma = armas[arma]['Dano']
     dano_total = dano_base + dano_arma
 
-    defesa = defensor.get['Defesa']
-    dano_final = max[dano_total - defesa, 0]
+    defesa = defensor['Defesa']
+    dano_final = max(dano_total - defesa, 0)
 
     defensor['HP'] -= dano_final
     if defensor['HP'] <= 0:
@@ -307,5 +314,3 @@ def calcular_dano(atacante, defensor):
     #botar um cheque de pra ver se o defensor é o player, caso sim, game over e inicia de novo
     else:
         print(f"{defensor['Nome']} recebeu {dano_final} de dano.")
-
-    return dano_final
