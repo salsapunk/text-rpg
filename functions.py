@@ -260,43 +260,50 @@ def classe_e_pericias_inimigo():
     return classe_inimigo, pericias_inimigo
 
 def sortear_nome():
-    match randint(1, 3):
-        case 1:
-            nome = 'Róger'
-        case 2:
-            nome = 'Sérgio'
-        case 3:
-            nome = 'Rodolfo'
+    nome = nomes[d100]
     return nome
 
-def sortear_arma():
-    match randint(1, 3):
-        case 1:
-            arma = 'Desarmado'
-        case 2:
-            arma = 'Faca'
-        case 3:
-            arma = 'Pistola'
+def sortear_arma(level_inimigo):
+    if level_inimigo <= 2:
+        arma = armas[d4]
+    else:
+        arma = armas[d8]
     return arma
+
+def tipo_e_elemento_monstro():
+    None
 
 #cria o inimigo
 def criar_inimigo(humano):
     if humano == True:
         inimigo, pericias_inimigo = classe_e_pericias_inimigo()
         inimigo['Nome'] = sortear_nome()
-        inimigo['Arma'] = sortear_arma()
-        #print(inimigo)
-        #print(pericias_inimigo)
-        
+        inimigo['Arma'] = sortear_arma(inimigo['Level'])
     else:
-        print('nao foi hoje')
+        inimigo, pericias_inimigo = tipo_e_elemento_monstro() #a ser definido
 
 def acoes_inimigo(inimigo, player):
-    acao = round(d6/2)
-    if acao == 1:
-        calcular_dano(inimigo, player)
-    if acao == 2: 
-        None
+    vida_inimigo = inimigo['HP']
+    if vida_inimigo >= vida_inimigo/2:
+        acao = round(d4/2)
+        if acao == 1: #ataque
+            calcular_dano(inimigo, player)
+        if acao == 2: #rituais 
+            None
+    else:
+        acao = round(d6/2)
+        if acao == 1:
+            calcular_dano(inimigo, player)
+        if acao == 2: #rituais
+            None
+        else: 
+            fugir(inimigo)
+
+def fugir(alvo):
+    #detectar o alvo, se o player fugir gerar um input pra definir a direção que ele vai fugir e gerar história
+    #se o inimigo fugir, gerar um print sobre e deixar o player livre para explorar
+    None
+
 
 def calcular_dano(atacante, defensor):
     dano_base = atacante['Força']
