@@ -31,37 +31,45 @@ ataques_fisicos = {
 #dicionário armas
 
 armas = {
-    'Desarmado': {
+    1: {
+        'Arma': 'Desarmado',
         'Dano': d6,
         'Alcance': 1
     },
-    'Faca': {
+    2: {
+        'Arma': 'Faca',
         'Dano': d6,
         'Alcance': 1
     },
-    'Barra de ferro': {
+    3: {
+        'Arma': 'Barra de ferro',
         'Dano': d6,
         'Alcance': 1
     },
-    'Pedaço de madeira': {
-        'Dano': d6,
-        'Alcance': 1
+    4: {
+        'Arma': 'Pedaço de madeira',
+            'Dano': d6,
+            'Alcance': 1
     },
-    'Espada': {
+    5: {
+        'Arma': 'Espada',
         'Dano': d12,
         'Alcance': 1
     },
-    'Pistola': {
+    6: {
+        'Arma': 'Pistola',
         'Dano': d10,
         'Alcance': 5,
         'Municoes': 6
     },
-    'Doze': {
+    7: {
+        'Arma': 'Doze',
         'Dano': 2*d12,
         'Alcance': 10,
         'Municoes': 2
     },
-    'Rifle': {
+    8: {
+        'Arma': 'Rifle',
         'Dano': 2*d10,
         'Alcance': 10,
         'Municoes': 5
@@ -150,104 +158,16 @@ pericias_especialista = {
 }
 
 nomes = {
-1: 'Adriano',
-2: 'Aline',
-3: 'Amanda',
-4: 'Ana',
-5: 'André',
-6: 'Antônio',
-7: 'Arthur',
-8: 'Beatriz',
-9: 'Bernardo',
-10: 'Bianca',
-11: 'Bruno',
-12: 'Caio',
-13: 'Camila',
-14: 'Carla',
-15: 'Carlos',
-16: 'Carolina',
-17: 'Cauê',
-18: 'Célia',
-19: 'César',
-20: 'Clara',
-21: 'Daniel',
-22: 'Danilo',
-23: 'Davi',
-24: 'Diego',
-25: 'Eduardo',
-26: 'Elisa',
-27: 'Enzo',
-28: 'Esther',
-29: 'Felipe',
-30: 'Fernanda',
-31: 'Flávia',
-32: 'Francisco',
-33: 'Gabriel',
-34: 'Gabriela',
-35: 'Giovanna',
-36: 'Guilherme',
-37: 'Gustavo',
-38: 'Helena',
-39: 'Henrique',
-40: 'Igor',
-41: 'Isabel',
-42: 'Isabela',
-43: 'Isadora',
-44: 'Ivan',
-45: 'João',
-46: 'Júlia',
-47: 'Juliana',
-48: 'Laura',
-49: 'Leonardo',
-50: 'Letícia',
-51: 'Lívia',
-52: 'Lorena',
-53: 'Lucas',
-54: 'Luís',
-55: 'Luíza',
-56: 'Manuela',
-57: 'Marcela',
-58: 'Márcio',
-59: 'Marco',
-60: 'Marcos',
-61: 'Maria',
-62: 'Mariana',
-63: 'Marina',
-64: 'Mário',
-65: 'Matheus',
-66: 'Miguel',
-67: 'Natália',
-68: 'Nathália',
-69: 'Nicole',
-70: 'Otávio',
-71: 'Pablo',
-72: 'Patrícia',
-73: 'Paulo',
-74: 'Pedro',
-75: 'Rafael',
-76: 'Raquel',
-77: 'Rebeca',
-78: 'Renata',
-79: 'Ricardo',
-80: 'Roberto',
-81: 'Rodrigo',
-82: 'Samuel',
-83: 'Sara',
-84: 'Sofia',
-85: 'Talita',
-86: 'Tatiana',
-87: 'Thiago',
-88: 'Tiago',
-89: 'Valéria',
-90: 'Vanessa',
-91: 'Vicente',
-92: 'Victor',
-93: 'Vinícius',
-94: 'Vitor',
-95: 'William',
-96: 'Yago',
-97: 'Yasmin',
-98: 'Sérgio',
-99: 'Maurício',
-100: 'Cláudio'
+1: 'Adriano', 2: 'Aline', 3: 'Amanda', 4: 'Ana', 5: 'André', 6: 'Antônio', 7: 'Arthur', 8: 'Beatriz', 9: 'Bernardo',
+10: 'Bianca', 11: 'Bruno', 12: 'Caio', 13: 'Camila', 14: 'Carla', 15: 'Carlos', 16: 'Carolina', 17: 'Cauê', 18: 'Célia',
+19: 'César', 20: 'Clara', 21: 'Daniel', 22: 'Danilo', 23: 'Davi', 24: 'Diego', 25: 'Eduardo', 26: 'Elisa', 27: 'Enzo',
+28: 'Esther', 29: 'Felipe', 30: 'Fernanda', 31: 'Flávia', 32: 'Francisco', 33: 'Gabriel', 34: 'Gabriela', 35: 'Giovanna',
+36: 'Guilherme', 37: 'Gustavo', 38: 'Helena', 39: 'Henrique', 40: 'Igor', 41: 'Isabel', 42: 'Isabela', 43: 'Isadora', 44: 'Ivan',
+45: 'João', 46: 'Júlia', 47: 'Juliana', 48: 'Laura', 49: 'Leonardo', 50: 'Letícia', 51: 'Lívia', 52: 'Lorena',
+53: 'Lucas', 54: 'Luís', 55: 'Luíza', 56: 'Manuela', 57: 'Marcela', 58: 'Márcio', 59: 'Marco', 60: 'Marcos', 61: 'Maria',
+62: 'Mariana', 63: 'Marina', 64: 'Mário', 65: 'Matheus', 66: 'Miguel', 67: 'Natália', 68: 'Nathália', 69: 'Nicole',
+70: 'Otávio', 71: 'Pablo', 72: 'Patrícia', 73: 'Paulo', 74: 'Pedro', 75: 'Rafael', 76: 'Raquel', 77: 'Rebeca', 78: 'Renata',
+79: 'Ricardo', 80: 'Roberto', 81: 'Rodrigo', 82: 'Samuel', 83: 'Sara', 84: 'Sofia', 85: 'Talita', 86: 'Tatiana',
+87: 'Thiago', 88: 'Tiago', 89: 'Valéria', 90: 'Vanessa', 91: 'Vicente', 92: 'Victor', 93: 'Vinícius', 94: 'Vitor', 95: 'William',
+96: 'Yago', 97: 'Yasmin', 98: 'Sérgio', 99: 'Maurício', 100: 'Cláudio'
 }

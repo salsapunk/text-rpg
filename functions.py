@@ -265,9 +265,9 @@ def sortear_nome():
 
 def sortear_arma(level_inimigo):
     if level_inimigo <= 2:
-        arma = armas[d4]
+        arma = armas[d4]['Arma']
     else:
-        arma = armas[d8]
+        arma = armas[d8]['Arma']
     return arma
 
 def tipo_e_elemento_monstro():
@@ -279,6 +279,7 @@ def criar_inimigo(humano):
         inimigo, pericias_inimigo = classe_e_pericias_inimigo()
         inimigo['Nome'] = sortear_nome()
         inimigo['Arma'] = sortear_arma(inimigo['Level'])
+        return inimigo, pericias_inimigo
     else:
         inimigo, pericias_inimigo = tipo_e_elemento_monstro() #a ser definido
 
