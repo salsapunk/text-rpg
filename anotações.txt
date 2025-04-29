@@ -1,3 +1,6 @@
-1. necessário atualizar todas as datas dos inimigos, monstros, etc
+1. necessário atualizar todas as datas
+    a. monstros
+    b. rituais
 2. necessário atualizar funções:
     a. criar_inimigo(), acoes_inimigo()
+3.checar alcance

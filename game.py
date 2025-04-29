@@ -24,34 +24,17 @@ def game():
             #print(f'Atributos do jogador: \n {atributos_player}')
             #print(f'Perícias do jogador: \n {pericias_player}')
 
-            inimigo = criar_inimigo(True)
-            print(inimigo)
+            while True:
+                inimigo = criar_inimigo(True)
+                print(inimigo)
 
-            # try:
-            #     c = int(input('Você encontrou um inimigo! O que deseja fazer? \n' \
-            #             '1. Atacar \n'
-            #             '2. Ser furtivo \n' 
-            #             '3. Falar com ele \n' \
-            #             '4. Ir para outro lugar'))
-            #     if c == 1:
-            #         calcular_dano(player, inimigo)
-            #     elif c == 2:
-            #         None
-            #     elif c == 3:
-            #         None
-            #     elif c == 4:
-            #         None
-            #     else: 
-            #         None   
-            # except:
-            #     None
         elif a == 2:
-            print('configurações')
+            #configuracoes()
             input('Pressione qualquer tecla para continuar.')
             limpar_tela()
             game()
         elif a == 3:
-            print('ajuda')
+            #ajuda()
             input('Pressione qualquer tecla para continuar.')
             limpar_tela()
             game()

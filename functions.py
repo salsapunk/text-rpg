@@ -196,7 +196,7 @@ def criar_player():
                     player = {
                         'Nome': nome,
                         'Classe': classe,
-                        'Level': player_level
+                        'Level': player_level,
                     }
                     
                     sleep(0.4)
@@ -213,6 +213,7 @@ def criar_player():
                     player['Sanidade'] = sanidade
                     player['Pontos de Esforço'] = pe
                     player['Defesa'] = defesa
+                    player['Iniciativa'] = d20 + agilidade
 
                     player_pericias = pericias_player()
 
@@ -232,17 +233,6 @@ def humano_x_monstro():
     else: 
         humano = False
     return humano
-
-#sorteia a arma do inimigo (se for humano ou humanoide)
-def inimigo_sortear_armas(level):
-    k = 1
-    inimigo_armas = ['desarmado', 'barra de ferro', 'pedaço de madeira', 'pistola', 'doze', 'rifle']
-    inimigo_armas_de_fogo = 3 + k
-    if level <= 3:
-        inimigo_arma = inimigo_armas[randint(0, len(inimigo_armas)-inimigo_armas_de_fogo)]
-    else:
-        inimigo_arma = inimigo_armas[randint(0, len(inimigo_armas)-k)]
-    return inimigo_arma
 
 #classe, atributos e perícias do inimigo
 #define os atributos do inimigo
@@ -271,7 +261,16 @@ def sortear_arma(level_inimigo):
     return arma
 
 def tipo_e_elemento_monstro():
-    None
+    elemento = d4
+    if elemento == 1:
+        elemento = 'Sangue'
+    elif elemento == 2:
+        elemento = 'Morte'
+    elif elemento == 3:
+        elemento = 'Energia'
+    elif elemento == 4:
+        elemento = 'Conhecimento'
+    return elemento
 
 #cria o inimigo
 def criar_inimigo(humano):
@@ -285,12 +284,18 @@ def criar_inimigo(humano):
 
 def acoes_inimigo(inimigo, player):
     vida_inimigo = inimigo['HP']
+    nome = inimigo['Nome']
+    arma = inimigo['Arma']
     if vida_inimigo >= vida_inimigo/2:
-        acao = round(d4/2)
-        if acao == 1: #ataque
+        if inimigo['PE'] > 0:
+            acao = round(d4/2)
+            if acao == 1: #ataque
+                calcular_dano(inimigo, player)
+            elif acao == 2: #rituais 
+                ritual_dano()
+        else:
+            print(f'{nome} te ataca com {arma}')
             calcular_dano(inimigo, player)
-        if acao == 2: #rituais 
-            None
     else:
         acao = round(d6/2)
         if acao == 1:
@@ -298,13 +303,20 @@ def acoes_inimigo(inimigo, player):
         if acao == 2: #rituais
             None
         else: 
-            fugir(inimigo)
+            fugir_inimigo()
 
-def fugir(alvo):
-    #detectar o alvo, se o player fugir gerar um input pra definir a direção que ele vai fugir e gerar história
-    #se o inimigo fugir, gerar um print sobre e deixar o player livre para explorar
-    None
-
+def fugir_inimigo():
+    direcao = d4
+    match direcao:
+        case 1:
+            direcao = 'Norte'
+        case 2:
+            direcao = 'Oeste'
+        case 3:
+            direcao = 'Sul'
+        case 4:
+            direcao = 'Leste'
+    print(f'O inimigo fugiu para o {direcao}')
 
 def calcular_dano(atacante, defensor):
     dano_base = atacante['Força']
@@ -322,3 +334,6 @@ def calcular_dano(atacante, defensor):
     #botar um cheque de pra ver se o defensor é o player, caso sim, game over e inicia de novo
     else:
         print(f"{defensor['Nome']} recebeu {dano_final} de dano.")
+
+def ritual_dano():
+    None

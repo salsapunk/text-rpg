@@ -2,7 +2,6 @@ from random import randint
 level_inicial = 1
 player_level = level_inicial
 
-
 #dados
 d100 = randint(1, 100)
 d20 = randint(1, 20)
@@ -32,7 +31,7 @@ ataques_fisicos = {
 
 armas = {
     1: {
-        'Arma': 'Desarmado',
+        'Arma': 'Soco',
         'Dano': d6,
         'Alcance': 1
     },
@@ -170,4 +169,77 @@ nomes = {
 79: 'Ricardo', 80: 'Roberto', 81: 'Rodrigo', 82: 'Samuel', 83: 'Sara', 84: 'Sofia', 85: 'Talita', 86: 'Tatiana',
 87: 'Thiago', 88: 'Tiago', 89: 'Valéria', 90: 'Vanessa', 91: 'Vicente', 92: 'Victor', 93: 'Vinícius', 94: 'Vitor', 95: 'William',
 96: 'Yago', 97: 'Yasmin', 98: 'Sérgio', 99: 'Maurício', 100: 'Cláudio'
+}
+
+monstros = {
+    'Morte': {
+        1: {
+
+        },
+        2: {
+
+        },
+        3: {
+
+        },
+        4: {    #boss
+
+        }
+    },
+
+    'Sangue': {
+        1: {
+
+        },
+        2: {
+
+        },
+        3: {
+
+        },
+        4: {    #boss
+
+        }
+    },
+
+    'Energia': {
+        1: {
+            'Nome': 'Zumbi de Sangue',
+            'DT': 15,
+            'HP': 45,
+            'Iniciativa': 2*d20+5,
+            'Defesa': 17,
+            'Deslocamento': 9,
+            'Agilidade': 2,
+            'Força': 2,
+            'Inteligência': 0,
+            'Presença': 1,
+            'Vigor': 2
+
+        },
+        2: {
+
+        },
+        3: {
+
+        },
+        4: {    #boss
+
+        }
+    },
+
+    'Conhecimento': {
+        1: {
+
+        },
+        2: {
+
+        },
+        3: {
+
+        },
+        4: {    #boss
+
+        }
+    }
 }
